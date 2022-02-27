@@ -31,7 +31,11 @@
                 const keycode = (event.keyCode ? event.keyCode : event.which);
                 if (keycode == "13") {
                     lines++;
-                    $(`#p${lines - 1}`).after(`<p id="p${lines}">${lines}. <input type="text" name="${lines}" id="${lines}"></p>`);
+                    $(`#div${lines - 1}`).after(
+                        `<div class="flex-container" id="div${lines}">
+                            <label for="${lines}">${lines}.</label>
+                            <input type="text" name="${lines}" id="${lines}"">
+                        </div>`);
                     $(`#${lines}`).focus();
                 }
             });
@@ -67,10 +71,10 @@
 <body>
     <header><img src="celebrate.png" alt="Celebrate!"></header>
 
-    <p>
+    <div class="flex-container">
         <label for="name">Name:</label>
-        <input type="text" name="name" id="name" placeholder="Your name...">
-    </p>
+        <input type="text" name="name" id="name" placeholder="Bob">
+    </div>
 
     <p id="date">-</p>
     <p>
@@ -80,7 +84,10 @@
     <hr>
 
     <div id="achievements">
-        <p id="p1">1. <input type="text" name="1" id="1" placeholder="First achievement..."></p>
+        <div class="flex-container" id="div1">
+            <label for="1">1.</label>
+            <input type="text" name="1" id="1" placeholder="First achievement...">
+        </div>
     </div>
 
     <button type="button">Submit</button>

@@ -12,21 +12,24 @@
     <script src="jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
+            // Read stored name
+            const stored_name = localStorage.getItem("name");
+            $("#name").val(stored_name);
+
             // Display date
             const dateObj = new Date();
             $("#date").text(dateObj.toISOString().slice(0, 10));
 
-            // Create spinner and msg and hide immediately
-            const msgs = ['Excellent work!', 'You\'re on fire!', 'Godlike!', 'Pop off!', 'Good stuff!'];
-            $("button").after(`<div id="spinner"></div><p id="msg">${msgs[Math.floor(Math.random() * msgs.length)]}</p>`);
-            $("#spinner").hide();
-            $("#msg").hide();
+            // Store name locally every second
+            setInterval(() => {
+                localStorage.setItem("name", $("#name").val());
+            }, 1000);
 
             // Achievement entry logic
             let lines = 1;
             $("#achievements").on("keypress", "input", function (e) {
                 const keycode = (event.keyCode ? event.keyCode : event.which);
-                if (keycode == '13') {
+                if (keycode == "13") {
                     lines++;
                     $(`#p${lines - 1}`).after(`<p id="p${lines}">${lines}. <input type="text" name="${lines}" id="${lines}"></p>`);
                     $(`#${lines}`).focus();
@@ -38,7 +41,19 @@
             $("button").click(function () {
                 if (!isSubmitted) {
                     isSubmitted = true;
-                    $("#spinner").show();
+
+                    // Create spinner and msg
+                    const msgs = ["Excellent work", "You're on fire", "Godlike", "Pop off", "Good stuff"];
+                    $("button").after(`<div id="spinner"></div><p id="msg">${msgs[Math.floor(Math.random() * msgs.length)]}</p>`);
+                    $("#msg").hide();
+
+                    // Adjust msg if user entered a name
+                    if ($("#name").val()) {
+                        $("#msg").text(`${$("#msg").text()}, ${$("#name").val()}!`);
+                    } else {
+                        $("#msg").text($("#msg").text() + "!");
+                    }
+
                     setTimeout(() => {
                         $("#spinner").hide();
                         $("#msg").show();
@@ -52,7 +67,12 @@
 <body>
     <header><img src="celebrate.png" alt="Celebrate!"></header>
 
-    <p id="date"></p>
+    <p>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Your name...">
+    </p>
+
+    <p id="date">-</p>
     <p>
         Recall your achievements today<br>
         Record them below<br>

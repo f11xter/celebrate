@@ -1,5 +1,5 @@
 html {
-    font-family: "monospace";
+    font-family: "Courier New", "Courier", "Lucida Sans Typewriter", "Lucida Typewriter", "monospace";
     font-size: large;
     line-height: normal;
 }
@@ -26,6 +26,7 @@ hr {
 
 .flex-container {
     display: flex;
+    align-items: baseline;
 }
 
 input {
@@ -33,7 +34,7 @@ input {
     color: #bfbfbf;
     border: none;
     outline: none;
-    font-family: "monospace";
+    font-family: "Courier New", "Courier", "Lucida Sans Typewriter", "Lucida Typewriter", "monospace";
     font-size: large;
     flex-grow: 1;
 }
@@ -43,7 +44,7 @@ button {
     border: none;
     padding: 0.5em;
     margin-top: 1em;
-    font-family: "monospace";
+    font-family: "Courier New", "Courier", "Lucida Sans Typewriter", "Lucida Typewriter", "monospace";
     font-size: large;
     font-weight: bold;
     background-color: #2e2e2e;

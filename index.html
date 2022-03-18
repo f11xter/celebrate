@@ -8,64 +8,6 @@
 
     <link rel="stylesheet" href="style.css" />
     <title>Celebrate!</title>
-
-    <script src="jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Read stored name
-            const stored_name = localStorage.getItem("name");
-            $("#name").val(stored_name);
-
-            // Display date
-            const dateObj = new Date();
-            $("#date").text(dateObj.toISOString().slice(0, 10));
-
-            // Store name locally every second
-            setInterval(() => {
-                localStorage.setItem("name", $("#name").val());
-            }, 1000);
-
-            // Achievement entry logic
-            let lines = 1;
-            $("#achievements").on("keypress", "input", function (e) {
-                const keycode = (event.keyCode ? event.keyCode : event.which);
-                if (keycode == "13") {
-                    lines++;
-                    $(`#div${lines - 1}`).after(
-                        `<div class="flex-container" id="div${lines}">
-                            <label for="${lines}">${lines}.</label>
-                            <input type="text" name="${lines}" id="${lines}" placeholder=" ">
-                        </div>`);
-                    $(`#${lines}`).focus();
-                }
-            });
-
-            // Submit button logic
-            let isSubmitted = false;
-            $("button").click(function () {
-                if (!isSubmitted) {
-                    isSubmitted = true;
-
-                    // Create spinner and msg
-                    const msgs = ["Excellent work", "You're on fire", "Godlike", "Pop off", "Good stuff"];
-                    $("button").after(`<div id="spinner"></div><p id="msg">${msgs[Math.floor(Math.random() * msgs.length)]}</p>`);
-                    $("#msg").hide();
-
-                    // Adjust msg if user entered a name
-                    if ($("#name").val()) {
-                        $("#msg").text(`${$("#msg").text()}, ${$("#name").val()}!`);
-                    } else {
-                        $("#msg").text($("#msg").text() + "!");
-                    }
-
-                    setTimeout(() => {
-                        $("#spinner").hide();
-                        $("#msg").show();
-                    }, 2000);
-                }
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -86,11 +28,13 @@
     <div id="achievements">
         <div class="flex-container" id="div1">
             <label for="1">1.</label>
-            <input type="text" name="1" id="1" placeholder="First achievement...">
+            <input type="text" name="1" id="1" placeholder="First achievement..." />
         </div>
     </div>
 
     <button type="button">Submit</button>
+
+    <script src="app.js"></script>
 </body>
 
 </html>

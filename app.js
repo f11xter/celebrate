@@ -1,6 +1,6 @@
 // Read stored name
 const stored_name = localStorage.getItem("name");
-let name_input = document.querySelector("#name");
+var name_input = document.querySelector("#name");
 name_input.value = stored_name;
 
 // Display date
@@ -59,6 +59,7 @@ function submit_clicked() {
             msg.textContent += "!";
         }
 
+        // Remove spinner and show msg after 4 seconds
         setTimeout(() => {
             document.getElementById("spinner").hidden = true;
             msg.hidden = false;

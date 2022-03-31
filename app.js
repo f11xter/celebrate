@@ -1,3 +1,5 @@
+console.log("Dedicated to Madi");
+
 // Read stored name
 const stored_name = localStorage.getItem("name");
 var name_input = document.querySelector("#name");

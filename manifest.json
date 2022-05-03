@@ -1,7 +1,8 @@
 {
   "name": "Celebrate!",
   "short_name": "Celebrate!",
-  "start_url": "/index.html",
+  "start_url": "/celebrate/index.html",
+  "scope": "/celebrate/",
   "display": "standalone",
   "background_color": "#1E1E1E",
   "theme_color": "#1E1E1E", 

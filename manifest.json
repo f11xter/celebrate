@@ -1,0 +1,21 @@
+{
+  "name": "Celebrate!",
+  "short_name": "Celebrate!",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1E1E1E",
+  "theme_color": "#1E1E1E", 
+  "icons": [
+    {
+      "src": "/assets/images/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/images/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

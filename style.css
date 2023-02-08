@@ -1,96 +1,210 @@
+:root {
+    --text: hsl(0, 0%, 80%);
+    --bg: hsl(10 5% 5%);
+    --button-bg: hsl(10 2% 18%);
+    --hr: hsl(10 2% 30%);
+
+    /* update in app.js if changed */
+    --js-loading-width-time: 1s;
+    --js-loading-opacity-time: 0.5s;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    accent-color: hsl(21 100% 60%);
+}
+
 body {
-    font-family: "Courier New", "Courier", "Lucida Sans Typewriter", "Lucida Typewriter", "monospace";
-    font-size: large;
-    line-height: normal;
-    color: #bfbfbf;
-    background-color: #1e1e1e;
-    font-weight: 500;
-    max-width: 40rem;
-    padding: 1rem;
+    max-width: 60ch;
     margin: 0 auto;
+    padding: 1rem;
+
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 150%;
+
+    color: var(--text);
+    background-color: var(--bg);
 }
 
-img {
+h1 {
+    position: relative;
+    width: fit-content;
+    margin: 0 0 1rem 0;
+
+    font-family: "Merienda", serif;
+    font-size: clamp(2rem, 10vw, 4rem);
+    line-height: 140%;
+
+    /* gradient text */
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(to right, hsl(0 100% 60%), hsl(60 100% 60%));
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+h1::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 35%;
+    height: 4px;
+
+    /* 35% of h1 gradient */
+    background: linear-gradient(to right, hsl(0 100% 60%), hsl(21 100% 60%));
+    border-radius: 2px;
+}
+
+p {
+    margin: 0 0 1rem 0;
+}
+
+.hr {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    height: 2px;
     margin-bottom: 1rem;
+    border-radius: 1px;
+    background-color: var(--hr);
 }
 
-hr {
-    margin-bottom: 1rem;
-}
-
-.flex-container {
+.input-container {
     display: flex;
-    align-items: baseline;
     flex-wrap: wrap;
+    align-items: center;
+    gap: 1ch;
 }
 
 input {
-    background-color: #1e1e1e;
-    color: #bfbfbf;
-    border: none;
-    outline: none;
-    font-family: "Courier New", "Courier", "Lucida Sans Typewriter", "Lucida Typewriter", "monospace";
-    font-size: large;
+    width: 0;
     flex-grow: 1;
     padding: 0;
-}
 
-button {
-    flex-grow: 1;
-    min-width: 140px;
-    cursor: pointer;
-    border: none;
-    padding: 0.5rem;
-    font-family: "Courier New", "Courier", "Lucida Sans Typewriter", "Lucida Typewriter", "monospace";
+    font-family: "Inter", sans-serif;
     font-size: large;
-    font-weight: bold;
-    background-color: #2e2e2e;
-    color: #bfbfbf;
-    transition-duration: 0.2s;
+
+    color: var(--text);
+    background-color: var(--bg);
+
+    border: none;
+    outline: none;
 }
 
-button:hover {
-    background-color: #4e4e4e;
+input#name {
+    font-weight: bold;
 }
 
 #button-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
+    gap: 1rem;
+
     width: 100%;
     margin: 1rem 0;
-    gap: 1rem;
 }
 
-#spinner {
-    width: 3rem;
-    height: 3rem;
-    margin: auto;
-    margin-top: 1rem;
-    border-radius: 50%;
-    border: solid #1e1e1e;
-    border-top: 0.3rem solid #3498db;
-    animation: spin 1.2s linear infinite;
+button {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1ch;
+
+    flex-grow: 1;
+    min-width: max-content;
+    width: calc(50% - 1rem);
+    padding: 0.6rem 1.2rem;
+
+    font-family: "Inter", sans-serif;
+    font-size: large;
+    font-weight: bold;
+
+    color: var(--text);
+
+    border: none;
+    border-radius: 0.5rem;
+
+    cursor: pointer;
+    transition-duration: 0.1s;
 }
 
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+button#submit {
+    background-color: var(--button-bg);
+}
+
+button#clear {
+    background-color: var(--bg);
+    border: 2px solid var(--button-bg);
+}
+
+button:hover,
+button:focus-visible {
+    filter: brightness(140%);
+}
+
+/* button icons */
+svg {
+    stroke: var(--text);
+}
+
+#loading {
+    width: 0;
+    height: 1rem;
+    background: linear-gradient(to right, hsl(0 100% 60%), hsl(60 100% 60%));
+    border-radius: 0.5rem;
+    transition: width var(--js-loading-width-time), opacity var(--js-loading-opacity-time);
 }
 
 #msg {
-    animation: flash 0.75s alternate infinite;
+    --hue: 20;
+    --color: hsl(var(--hue) 100% 60%);
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 1s;
+    animation: flash 1s alternate infinite forwards, colorSwap 8s infinite forwards;
+}
+
+@media (prefers-reduced-motion) {
+    #msg {
+        animation-iteration-count: 1;
+    }
 }
 
 @keyframes flash {
-    from { 
-        color: #bfbfbf; 
+    0% {
+        color: var(--text);
         text-shadow: none;
     }
-    to { 
-        color: hotpink;
-        text-shadow: 0px 0px 20px hotpink;
+
+    100% {
+        color: var(--color);
+        text-shadow: 0 0 2ch var(--color);
+    }
+}
+
+@keyframes colorSwap {
+    0% {
+        --hue: 40;
+    }
+
+    15% {
+        --hue: 50;
+    }
+
+    40% {
+        --hue: 20;
+    }
+
+    65% {
+        --hue: 30;
     }
 }

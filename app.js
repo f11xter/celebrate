@@ -103,7 +103,6 @@ function submit() {
         isSubmitted = true;
 
         const bar = document.getElementById("loading");
-        bar.style.display = "block";
         bar.style.opacity = 1;
         bar.scrollIntoView();
 
@@ -117,7 +116,6 @@ function submit() {
                     bar.style.opacity = 0;
                     setTimeout(() => {
                         bar.style.width = 0;
-                        bar.style.display = "none";
                         showMsg()
                         isSubmitting = false;
                     }, opacityTime);
@@ -162,9 +160,6 @@ function clear() {
         const msg = document.getElementById("msg");
         msg.textContent = "";
         msg.style.opacity = 0;
-
-        // Prevent loading bar pop-in on next submit
-        document.getElementById("loading").style.display = "block";
 
         let delay = 100;
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {

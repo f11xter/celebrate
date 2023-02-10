@@ -21,7 +21,13 @@ html {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
     max-width: 60ch;
+    min-height: 100vh;
     margin: 0 auto;
     padding: 1rem;
 
@@ -32,6 +38,10 @@ body {
 
     color: var(--text);
     background-color: var(--bg);
+}
+
+main {
+    flex: 1;
 }
 
 h1 {
@@ -151,9 +161,23 @@ button:focus-visible {
     filter: brightness(140%);
 }
 
-/* button icons */
+/* icons */
 svg {
     stroke: var(--text);
+}
+
+#msg-container {
+    position: relative;
+    height: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* position absolute to prevent layout reflow when displaying congratulations */
+#msg-container > * {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    translate: 0 -50%;
 }
 
 #loading {
@@ -207,4 +231,26 @@ svg {
     65% {
         --hue: 30;
     }
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+footer > * {
+    margin: 0;
+}
+
+a {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1ch;
+
+    color: var(--text);
 }

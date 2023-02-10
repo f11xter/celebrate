@@ -22,8 +22,10 @@
 </head>
 
 <body>
-    <h1>Celebrate!</h1>
-
+    <header>
+        <h1>Celebrate!</h1>
+    </header>
+    
     <noscript>
         <div style="border: 2px dashed red; border-radius: 1rem; padding: 1rem;">
             <p style="font-size: 1.5rem; margin: 0;">
@@ -35,57 +37,80 @@
             </p>
         </div>
     </noscript>
+    
+    <main>
+        <p id="date"></p>
 
-    <p id="date"></p>
+        <p>
+            Take a moment to think about everything you've done today<br />
+            Consider all the things you've achieved.
+        </p>
+        <p>
+            Maybe you became an olympic champion<br />
+            or maybe you ate a balanced meal
+        </p>
+        <p>
+            Write down everything you're proud of<br />
+            and everything you appreciate
+        </p>
 
-    <p>
-        Take a moment to think about everything you've done today<br />
-        Consider all the things you've achieved.
-    </p>
-    <p>
-        Maybe you became an olympic champion<br />
-        or maybe you ate a balanced meal
-    </p>
-    <p>
-        Write down everything you're proud of<br />
-        and everything you appreciate
-    </p>
+        <div class="hr"></div>
+
+        <div class="input-container">
+            <label for="name">My name is:</label>
+            <input type="text" name="name" id="name" placeholder="Bob">
+        </div>
+
+        <p>and today I'm proud to have...</p>
+
+        <div id="achievements"></div>
+
+        <div id="button-container">
+            <button type="button" id="clear">
+                <!-- Icon courtesy of Iconoir -->
+                <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M21 21H9M15.889 14.89L8.464 7.463M2.893 12.607l9.193-9.193a2 2 0 012.828 0l4.95 4.95a2 2 0 010 2.828l-9.243 9.243a1.929 1.929 0 01-2.728 0l-5-5a2 2 0 010-2.828z"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Clear
+            </button>
+
+            <button type="button" id="submit">
+                <!-- Icon courtesy of Iconoir -->
+                <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 13l4 4L19 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Submit
+            </button>
+        </div>
+
+        <div id="msg-container">
+            <div id="loading"></div>
+            <p id="msg"></p>
+        </div>
+    </main>
+
 
     <div class="hr"></div>
-
-    <div class="input-container">
-        <label for="name">My name is:</label>
-        <input type="text" name="name" id="name" placeholder="Bob">
-    </div>
-
-    <p>and today I'm proud to have...</p>
-
-    <div id="achievements"></div>
-
-    <div id="button-container">
-        <button type="button" id="clear">
-            <!-- Icon courtesy of Iconoir -->
-            <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M21 21H9M15.889 14.89L8.464 7.463M2.893 12.607l9.193-9.193a2 2 0 012.828 0l4.95 4.95a2 2 0 010 2.828l-9.243 9.243a1.929 1.929 0 01-2.728 0l-5-5a2 2 0 010-2.828z"
-                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            Clear
-        </button>
-
-        <button type="button" id="submit">
+    <footer>
+        <p>
+            Got thoughts or suggestions?
+        </p>
+        <a href="https://github.com/f11xter/celebrate/discussions/">
             <!-- Icon courtesy of Iconoir -->
             <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 13l4 4L19 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M7 12h10M7 8h6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                    d="M3 20.29V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H7.961a2 2 0 00-1.561.75l-2.331 2.914A.6.6 0 013 20.29z"
+                    stroke-width="1.5"></path>
             </svg>
-            Submit
-        </button>
-    </div>
-
-    <div id="loading"></div>
-    <p id="msg"></p>
+            Get in touch
+        </a>
+    </footer>
 </body>
 
 </html>

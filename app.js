@@ -20,6 +20,7 @@ const CONGRATULATIONS = [
 
 const PLACEHOLDERS = [
     "rested",
+    "relaxed",
     "read a book",
     "watched a film",
     "showered",
@@ -27,7 +28,7 @@ const PLACEHOLDERS = [
     "done the washing up",
     "gone for a walk",
     "exercised",
-    "ate breakfast",
+    "eaten breakfast",
     "drunk some water",
     "done something I love",
     "done some work",
